@@ -8,3 +8,7 @@ DeepLabCut is a software for tracking animal movement and pose estimation based 
 Despite easiness to use DeepLabCut, a more tricky part is to pre-process raw trajectory data before real analysis. 
 This package is a processing toolkit for that.
 
+To install dlcpr package, 
+```r
+devtools::install_github("HeathRossie/dlcpr")
+```
