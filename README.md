@@ -20,6 +20,7 @@ DeepLabCut (currently, I am using version 2.0.7.1) produces a tracking result li
 ![demo2](https://user-images.githubusercontent.com/17682330/72918441-f32be780-3d45-11ea-95c9-7e95fbae39d6.png)
 
 This format is incompatible with ordinary function to read a csv file (such as read.csv() or fread()).
+
 The function read.dlc() is modified version of fread() from data.table package to easily read a csv file from DeepLabCut.
 
 ```r
@@ -31,8 +32,20 @@ library(zoo)
 
 setwd("Your folder path")
 d = read.dlc("filename.csv", fps = 30)
-
 ```
 
+The arguments of read.dlc() is as follows;
 
-In most of situations in a real reserach, we have multiple videos to analyze, resulting in many csv files produced 
+direc (optional): you can specify the directory where csv files are stored. If not specified, current working directory will be used.
+
+fps (optional): frame-per-second of your camera. If specified, "time" column will be added.
+
+spline: If TRUE, it drops frames of low likelihood, and interpolate them. Default is TRUE
+
+threshold: Threshold of likelihood. Default is .90
+
+
+A toy example of "Rock-paper-scissors game" tracking can be found "data" section in this page. You can play around with it.
+
+
+
