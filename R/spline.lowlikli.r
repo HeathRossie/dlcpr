@@ -7,6 +7,8 @@
 #'@export
 
 spline.lowlikli = function(d, threshold = .90){
+
+  # check columns of likelihood
   liklirows = grep("likeli", names(d))
   # remove low likelihood row
   for(i in liklirows){
@@ -31,19 +33,16 @@ spline.lowlikli = function(d, threshold = .90){
     }else{last_NA = 0}
 
     # smooth spline interpolation
-    # na.spline returns error if there is no NA, so using "if"
-    if(sum(is.na(xx))>0){
+    if(sum(!is.na(xx)) > 2){
       d[,i-2] = c(rep(NA, initial_NA), zoo::na.spline(xx), rep(NA, last_NA))
-    }else{
-      d[,i-2] = c(rep(NA, initial_NA), xx, rep(NA, last_NA))
-    }
-
-    if(sum(is.na(yy))>0){
       d[,i-1] = c(rep(NA, initial_NA), zoo::na.spline(yy), rep(NA, last_NA))
     }else{
+      d[,i-2] = c(rep(NA, initial_NA), xx, rep(NA, last_NA))
       d[,i-1] = c(rep(NA, initial_NA), yy, rep(NA, last_NA))
+      print(paste("caution!"))
+      print(paste(round(sum(!is.na(xx)) / nrow(d), 2) * 100, "of your data is above threshold."))
+      print("it means that your tracking accuracy may be severely low")
     }
-
   }
 
   return(d)
