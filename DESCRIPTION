@@ -1,0 +1,13 @@
+Package: dlcpr
+Type: Package
+Title: Easy processing of tracking data from DeepLabCut
+Version: 0.1.0
+Author: Hiroshi Matsui, PhD
+Maintainer: Hiroshi Matsui, PhD <matsui.h1004@gmail.com>
+Description: Motion tracking and pose estimation are useful tools for various fields including psychology, neuroscience, and animal behaviour. DeepLabCut is a open source software based on deep learning, which allows multi body parts tracking on Python.
+    However, ones need pre-process flows when analyzing tracking data, and it often takes time. This package is intended to import tracking data from DeepLabCut within a few line.
+License: MIT + License
+Encoding: UTF-8
+LazyData: true
+import: data.table
+RoxygenNote: 7.0.2
