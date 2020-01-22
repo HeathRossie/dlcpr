@@ -13,3 +13,26 @@ To install dlcpr package,
 devtools::install_github("HeathRossie/dlcpr")
 ```
 
+
+## importing data
+DeepLabCut (currently, I am using version 2.0.7.1) produces a tracking result like following.
+
+![demo2](https://user-images.githubusercontent.com/17682330/72918441-f32be780-3d45-11ea-95c9-7e95fbae39d6.png)
+
+This format is incompatible with ordinary function to read a csv file (such as read.csv() or fread()).
+The function read.dlc() is modified version of fread() from data.table package to easily read a csv file from DeepLabCut.
+
+```r
+# import package
+library(dlcpr)
+# import also dependent package
+library(data.table) 
+library(zoo)
+
+setwd("Your folder path")
+d = read.dlc("filename.csv", fps = 30)
+
+```
+
+
+In most of situations in a real reserach, we have multiple videos to analyze, resulting in many csv files produced 

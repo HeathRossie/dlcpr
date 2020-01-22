@@ -31,8 +31,19 @@ spline.lowlikli = function(d, threshold = .90){
     }else{last_NA = 0}
 
     # smooth spline interpolation
-    d[,i-2] = c(rep(NA, initial_NA), zoo::na.spline(xx), rep(NA, last_NA))
-    d[,i-1] = c(rep(NA, initial_NA), zoo::na.spline(yy), rep(NA, last_NA))
+    # na.spline returns error if there is no NA, so using "if"
+    if(sum(is.na(xx))>0){
+      d[,i-2] = c(rep(NA, initial_NA), zoo::na.spline(xx), rep(NA, last_NA))
+    }else{
+      d[,i-2] = c(rep(NA, initial_NA), xx, rep(NA, last_NA))
+    }
+
+    if(sum(is.na(yy))>0){
+      d[,i-1] = c(rep(NA, initial_NA), zoo::na.spline(yy), rep(NA, last_NA))
+    }else{
+      d[,i-1] = c(rep(NA, initial_NA), yy, rep(NA, last_NA))
+    }
+
   }
 
   return(d)
