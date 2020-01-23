@@ -70,6 +70,8 @@ Then, read these csv files at once.
 ```r
 d = read.all(files, spline=TRUE, threshold = .9, fps=30)
 ```
+![demo](https://user-images.githubusercontent.com/17682330/72969594-172f0d80-3dc6-11ea-8ea1-1bcbb8a8a663.png)
+
 resulting in a data frame, wchich contains all trajectories.
 
 Each time series of trajectories are indexed by `file` and `ser` columns. You can perform futher processes by using these variables.
