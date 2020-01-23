@@ -2,11 +2,11 @@
 This package is a data processing toolkit for tracking data obtained from DeepLabCut.
 
 
-DeepLabCut is a software for tracking animal movement and pose estimation based on deep learning (https://github.com/AlexEMG/DeepLabCut). It is available on Python, and produces tracking results easily.
+DeepLabCut is a software for tracking animal movement and pose estimation based on deep learning (https://github.com/AlexEMG/DeepLabCut). It is available on Python, and produces highly accurate tracking results with 50-200 training data.
 
 ![demo](https://user-images.githubusercontent.com/17682330/72917667-8a903b00-3d44-11ea-93a2-370357be680e.gif)
 
-A  tricky part is to pre-process raw trajectories  before real analysis.  This package is a processing toolkit for that.
+A bit tricky part is to pre-process raw trajectories before real analysis.  This package is a processing toolkit for that.
 
 
 To install dlcpr package, 
