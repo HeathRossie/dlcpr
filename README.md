@@ -16,6 +16,15 @@ devtools::install_github("HeathRossie/dlcpr")
 ```
 
 
+## Current functionality
+
+| function | usage |
+----|---- 
+| read.dlc | read csv file, exported from DeepLabCut |
+| read.all | apply read.dlc() to multiple csv files and combine into one data frame |
+| get_velocity | estimate velocity by 3rd order approximation |
+
+
 ## importing data
 DeepLabCut (currently, I am using version 2.0.7.1) produces a tracking result like following.
 
