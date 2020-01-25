@@ -103,3 +103,9 @@ The arugumen `colour=as.factor(ser)` enables to depict lines for each time serie
 ![demo5](https://user-images.githubusercontent.com/17682330/72969041-06ca6300-3dc5-11ea-9a53-e46ee79e2051.png)
 
 
+
+
+
+
+
+
