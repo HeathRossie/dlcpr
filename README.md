@@ -44,7 +44,7 @@ d = read.dlc("filename.csv", fps = 30)
 The arguments of `read.dlc()` is as follows;
 
 
-| argument | mean |
+| argument |  |
 ----|---- 
 | direc (optional) | you can specify the directory where csv files are stored. If not specified, current working directory will be used. |
 | fps (optional) | frame-per-second of your camera. If specified, "time" column will be added. |
@@ -104,8 +104,62 @@ The arugumen `colour=as.factor(ser)` enables to depict lines for each time serie
 
 
 
+## Estimate velocity
+A function `get_velocity()` estimates velocity by 3rd order approximation.  
+
+![demo](https://user-images.githubusercontent.com/17682330/73118967-bb968880-3f5b-11ea-9512-1617757f6fd0.png)
+where v, p, Δt represent velocity, position, time step, respectively.  
+The first and last frames are dropped and NA is assigned.
+
+
+For examole, checking derivation of sin(x) equals to cos(x), since velocity is the first derivative of position.
+
+
+```r
+# d is a data.frame created by read.dlc() or read.all()
+d$sin = sin(d$time)
+plot(d$sin)
+d$vel = get_velocity(d, d$sin)
+d$cos = cos(d$time)
+
+# black line represents estimated values and read line represents cosine function
+ggplot(d) +
+  geom_line(aes(x=time, y=vel)) +
+  geom_line(aes(x=time, y=cos), colour="red", lty=2) +
+  xlim(0, 10) + xlab("time") + ylab("velocity")
+
+```
+
+![demo](https://user-images.githubusercontent.com/17682330/73118924-15e31980-3f5b-11ea-8b95-7f0be9c5452b.png)
 
 
 
+In more realistic situations, we usually have several time series of trajectories.  
+`get_velocity()` automatically split the data according to `ser` variable (serial number), estimate velocity of each time series, and combine them.
 
+
+For example, in the case that we have three time series in a data frame, which means that `read.all()` function read three csv files, 
+
+![demo](https://user-images.githubusercontent.com/17682330/73119079-3613d800-3f5d-11ea-9242-d0a1b1afde64.png)
+
+
+we can simply apply `get_velocity()` to the data frame.
+
+```r
+d$vel_palm_x = get_velocity(d, d$palm_x)
+d$vel_palm_y = get_velocity(d, d$palm_y)
+d$vel_palm = sqrt(d$vel_palm_x^2 + d$vel_palm_y^2)
+
+ggplot(d) +
+  geom_line(aes(x=time, y=vel_palm, colour=as.factor(d$ser)))
+```
+
+![demo](https://user-images.githubusercontent.com/17682330/73119032-aa9a4700-3f5c-11ea-9624-d056634e658d.png)
+
+
+
+| argument |  |
+----|---- 
+| d | data frame created by read.dlc() or read.all() |
+| vec | a vector that you are interested in estimating velocity | 
 

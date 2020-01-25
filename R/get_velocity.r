@@ -18,7 +18,7 @@ get_velocity = function(d, vec){
     calc = function(d){
       # denominator
       if(length(d$time) != 0){
-        time = (diff(xx)*2)[1]
+        time = (diff(d$time)*2)[1]
       }else{
         time = 2
         print("There is no 'time' variable, so use 2 instead")
