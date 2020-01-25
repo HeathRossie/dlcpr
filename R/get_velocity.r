@@ -37,4 +37,3 @@ get_velocity = function(d, vec){
   if(!("v" %in% ls())) v = NULL
   return(v)
 }
-
