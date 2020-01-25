@@ -107,7 +107,7 @@ The arugumen `colour=as.factor(ser)` enables to depict lines for each time serie
 ## Estimate velocity
 A function `get_velocity()` estimates velocity by 3rd order approximation.  
 
-![demo](https://user-images.githubusercontent.com/17682330/73118967-bb968880-3f5b-11ea-9512-1617757f6fd0.png)
+![demo](https://user-images.githubusercontent.com/17682330/73118967-bb968880-3f5b-11ea-9512-1617757f6fd0.png)  
 where v, p, Δt represent velocity, position, time step, respectively.  
 The first and last frames are dropped and NA is assigned.
 
@@ -151,7 +151,8 @@ d$vel_palm_y = get_velocity(d, d$palm_y)
 d$vel_palm = sqrt(d$vel_palm_x^2 + d$vel_palm_y^2)
 
 ggplot(d) +
-  geom_line(aes(x=time, y=vel_palm, colour=as.factor(d$ser)))
+  geom_line(aes(x=time, y=vel_palm, colour=as.factor(d$ser))) + 
+  ylab("velocity (pixel/second)")
 ```
 
 ![demo](https://user-images.githubusercontent.com/17682330/73119032-aa9a4700-3f5c-11ea-9624-d056634e658d.png)
