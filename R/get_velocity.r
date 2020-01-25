@@ -3,7 +3,7 @@
 #'@param [d] data frame created by read.dlc() or read.all()
 #'@param [vec] a vector to calcurate velocity. Normally, a column of d
 #'@return
-#' velocity estimation
+#' velocity estimated with 3rd order approximation
 #'@export
 
 get_velocity = function(d, vec){
