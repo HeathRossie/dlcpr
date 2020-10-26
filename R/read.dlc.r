@@ -17,7 +17,7 @@ read.dlc = function(fileName, direc = NULL, fps = NULL, spline = TRUE, threshold
     setwd(direc)
   }
 
-  d = fread(fileName, skip=2, data.table = FALSE)
+  d = data.table::fread(fileName, skip=2, data.table = FALSE)
 
   # rename variables
   colName = colnames(fread(fileName, skip=1, data.table = FALSE))
